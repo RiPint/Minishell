@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jerollin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/16 17:30:55 by jerollin          #+#    #+#             */
+/*   Updated: 2016/11/16 19:02:10 by jerollin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/ft_sh1.h"
 #include <stdlib.h>
 
-static char**		ft_get_envpath(t_env *shell)
+static char		**ft_get_envpath(t_env *shell)
 {
-	char*	path_line;
-	char**	path;
+	char	*path_line;
+	char	**path;
 
 	if (!(path_line = ft_get_env_value(shell, "PATH")))
 	{
@@ -22,8 +34,8 @@ static char**		ft_get_envpath(t_env *shell)
 
 static void		ft_launch(t_env *shell)
 {
-	char**	inputs;
-	char** 	ptr;
+	char	**inputs;
+	char	**ptr;
 
 	if (!(inputs = ft_strsplit(shell->str, ';')))
 		return ;
@@ -44,9 +56,9 @@ static void		ft_launch(t_env *shell)
 	shell->str = NULL;
 }
 
-int			ft_reboot_imput(t_env *shell)
+int				ft_reboot_imput(t_env *shell)
 {
-	int	value;
+	int		value;
 
 	while ((value = ft_get_inputs(shell)))
 	{
@@ -62,7 +74,7 @@ int			ft_reboot_imput(t_env *shell)
 
 static int		ft_minishell(char **envp)
 {
-	t_env*	shell;
+	t_env	*shell;
 
 	if (!(shell = ft_get_env(envp)))
 		return (0);
@@ -77,9 +89,9 @@ static int		ft_minishell(char **envp)
 	envp++;
 }
 
-int			main(int ac, char **av, char **envp)
+int				main(int ac, char **av, char **envp)
 {
-	int	ret;
+	int		ret;
 
 	(void)ac;
 	(void)av;

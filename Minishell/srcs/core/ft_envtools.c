@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_envtools.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jerollin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/16 17:26:36 by jerollin          #+#    #+#             */
+/*   Updated: 2016/11/16 17:26:38 by jerollin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/ft_sh1.h"
 
-char**		ft_get_env_addr(t_env *shell, char *name)
+char		**ft_get_env_addr(t_env *shell, char *name)
 {
-	char **ptr;
+	char	**ptr;
 
 	ptr = shell->env;
 	while (*ptr)
@@ -14,9 +26,9 @@ char**		ft_get_env_addr(t_env *shell, char *name)
 	return (NULL);
 }
 
-char*		ft_get_env_value(t_env *shell, char *name)
+char		*ft_get_env_value(t_env *shell, char *name)
 {
-	char **ptr;
+	char	**ptr;
 
 	ptr = shell->env;
 	while (*ptr)
@@ -28,10 +40,10 @@ char*		ft_get_env_value(t_env *shell, char *name)
 	return (NULL);
 }
 
-int		ft_namematch(char *name, char *var)
+int			ft_namematch(char *name, char *var)
 {
-	int i;
-	int len;
+	int		i;
+	int		len;
 
 	len = ft_strlen(name);
 	i = 1;
@@ -46,9 +58,9 @@ int		ft_namematch(char *name, char *var)
 	return (0);
 }
 
-int		ft_value_exist(t_env *shell, char *name)
+int			ft_value_exist(t_env *shell, char *name)
 {
-	char**ptr;
+	char	**ptr;
 
 	ptr = shell->env;
 	while (*ptr)
@@ -62,7 +74,7 @@ int		ft_value_exist(t_env *shell, char *name)
 
 void		ft_exit(t_env *shell)
 {
-	inti;
+	int		i;
 
 	i = 0;
 	while (shell->env[i])

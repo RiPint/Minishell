@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_delete.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jerollin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/16 17:56:53 by jerollin          #+#    #+#             */
+/*   Updated: 2016/11/16 17:57:28 by jerollin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/ft_sh1.h"
 
-int		ft_process_delete(t_env *e)
+int			ft_process_delete(t_env *e)
 {
-	char*	tmp;
+	char	*tmp;
 
 	if (e->index > 0)
 	{
@@ -22,9 +34,9 @@ int		ft_process_delete(t_env *e)
 	return (0);
 }
 
-int		ft_process_back_delete(t_env *e)
+int			ft_process_back_delete(t_env *e)
 {
-	char*	tmp;
+	char	*tmp;
 
 	if (e->index < e->max)
 	{
@@ -43,7 +55,7 @@ int		ft_process_back_delete(t_env *e)
 
 static int	ft_ctrlk(t_env *e)
 {
-	char*	tmp;
+	char	*tmp;
 
 	if (e->index < e->max)
 	{
@@ -73,7 +85,7 @@ static int	ft_ctrll(t_env *e)
 	return (1);
 }
 
-int		ft_clear(t_env *e, char *inputs)
+int			ft_clear(t_env *e, char *inputs)
 {
 	if (inputs[0] == 11 && inputs[1] == 0 && inputs[2] == 0)
 		return (ft_ctrlk(e));

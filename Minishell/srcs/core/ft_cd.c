@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_cd.c                                            :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jerollin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/16 17:18:16 by jerollin          #+#    #+#             */
+/*   Updated: 2016/11/16 19:14:14 by jerollin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/ft_sh1.h"
 
-static intft_cd_less(t_env *shell)
+static int		ft_cd_less(t_env *shell)
 {
-	char*pwd;
-	char*old;
+	char		*pwd;
+	char		*old;
 
 	if (!(pwd = ft_get_env_value(shell, "PWD")))
 	{
@@ -25,12 +37,12 @@ static intft_cd_less(t_env *shell)
 	return (0);
 }
 
-static intft_cd_home(t_env *shell)
+static int		ft_cd_home(t_env *shell)
 {
-	char*path;
+	char		*path;
 
 	if ((path = ft_update(shell, "HOME",
-					shell->home, " cd: \x1B[31m<< HOME >> undefined\n\n\x1B[00m")))
+			shell->home, " cd: \x1B[31m<< HOME >> undefined\n\n\x1B[00m")))
 	{
 		ft_set_env_value(shell, "PWD", path);
 		chdir(path);
@@ -41,9 +53,9 @@ static intft_cd_home(t_env *shell)
 	return (0);
 }
 
-static intft_cd_normal(t_env *shell, char *path)
+static int		ft_cd_normal(t_env *shell, char *path)
 {
-	char*tmp;
+	char		*tmp;
 
 	if (access(path, F_OK) == 0)
 	{
@@ -58,12 +70,12 @@ static intft_cd_normal(t_env *shell, char *path)
 	return (0);
 }
 
-static intft_cd_double(t_env *shell)
+static int		ft_cd_double(t_env *shell)
 {
-	char*ptr;
-	char*pwd;
-	char*tmp;
-	intv;
+	char		*ptr;
+	char		*pwd;
+	char		*tmp;
+	int			v;
 
 	if (!(pwd = ft_get_env_value(shell, "PWD")))
 		pwd = ft_strdup(shell->pwd);
@@ -75,7 +87,7 @@ static intft_cd_double(t_env *shell)
 		return (0);
 	}
 	if (!(tmp = (char *)malloc(sizeof(char) * (ft_strlen(pwd +
-							ft_strlen(shell->av[2]) - ft_strlen(shell->av[1]))))))
+			ft_strlen(shell->av[2]) - ft_strlen(shell->av[1]))))))
 		return (0);
 	ft_strncpy(tmp, pwd, ptr - pwd);
 	ft_strcpy(tmp + (ptr - pwd), shell->av[2]);
@@ -87,10 +99,10 @@ static intft_cd_double(t_env *shell)
 	return (v);
 }
 
-intft_cd(t_env *shell)
+int				ft_cd(t_env *shell)
 {
-	char*path;
-	inti;
+	char		*path;
+	int			i;
 
 	i = 0;
 	if (shell->ac == 1 || (shell->ac == 2 &&

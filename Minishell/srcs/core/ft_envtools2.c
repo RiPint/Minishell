@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_envtools2.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jerollin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/16 17:26:43 by jerollin          #+#    #+#             */
+/*   Updated: 2016/11/16 17:27:26 by jerollin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/ft_sh1.h"
 
 void		ft_add_env_value(t_env *shell, char *name, char *value)
 {
-	size_tlen;
-	char**nenv;
-	char**ptr;
-	char**pnenv;
+	size_t	len;
+	char	**nenv;
+	char	**ptr;
+	char	**pnenv;
 
 	ptr = shell->env;
 	len = 0;
@@ -26,8 +38,8 @@ void		ft_add_env_value(t_env *shell, char *name, char *value)
 
 void		ft_set_env_value(t_env *shell, char *name, char *value)
 {
-	char**ptr;
-	intlen;
+	char	**ptr;
+	int		len;
 
 	if (ft_get_env_addr(shell, name))
 	{
@@ -48,7 +60,7 @@ void		ft_set_env_value(t_env *shell, char *name, char *value)
 
 void		ft_copy_env_value(t_env *shell, char *src, char *dst)
 {
-	char*tmp;
+	char	*tmp;
 
 	if (!(tmp = ft_get_env_value(shell, src)))
 		return ;
@@ -58,8 +70,8 @@ void		ft_copy_env_value(t_env *shell, char *src, char *dst)
 
 void		ft_swap_env_value(t_env *shell, char *src, char *dst)
 {
-	char*srccpy;
-	char*dstcpy;
+	char	*srccpy;
+	char	*dstcpy;
 
 	if (!(srccpy = ft_get_env_value(shell, src)))
 		return ;

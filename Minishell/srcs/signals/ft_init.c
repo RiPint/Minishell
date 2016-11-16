@@ -1,18 +1,30 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_init.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jerollin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/16 18:03:43 by jerollin          #+#    #+#             */
+/*   Updated: 2016/11/16 18:06:55 by jerollin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/ft_sh1.h"
 #include <stdio.h>
 
-BYPASS*		sing_oldterm(BYPASS *term)
+BYPASS				*sing_oldterm(BYPASS *term)
 {
-	static BYPASS*	old;
+	static BYPASS	*old;
 
 	if (term != NULL)
 		old = term;
 	return (old);
 }
 
-void		ft_sig_to_reload(int sig_num)
+void				ft_sig_to_reload(int sig_num)
 {
-	t_env*		shell;
+	t_env			*shell;
 
 	shell = ft_call_env(NULL);
 	if (sig_num == SIGINT)
@@ -38,9 +50,9 @@ void		ft_sig_to_reload(int sig_num)
 	}
 }
 
-void		ft_sigterm(int sig_num)
+void				ft_sigterm(int sig_num)
 {
-	t_env*		shell;
+	t_env			*shell;
 
 	shell = ft_call_env(NULL);
 	ft_putstr("\nBigBro: \x1B[31mTrying to kill me is useless !!!\n\x1B[00m");
@@ -52,9 +64,9 @@ void		ft_sigterm(int sig_num)
 	(void)sig_num;
 }
 
-void		ft_sig_to_exit(int sig_num)
+void				ft_sig_to_exit(int sig_num)
 {
-	t_env*		shell;
+	t_env			*shell;
 
 	shell = ft_call_env(NULL);
 	if (!(shell->cpid))
@@ -65,7 +77,7 @@ void		ft_sig_to_exit(int sig_num)
 	}
 }
 
-void		ft_init_signals(void)
+void				ft_init_signals(void)
 {
 	signal(SIGHUP, ft_sig_to_exit);
 	signal(SIGINT, ft_sig_to_reload);

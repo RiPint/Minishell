@@ -1,8 +1,20 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_move.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jerollin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/16 17:59:55 by jerollin          #+#    #+#             */
+/*   Updated: 2016/11/16 18:00:45 by jerollin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/ft_sh1.h"
 
 static void		ft_trucbidule(t_env *e)
 {
-	char	tmp[2];
+	char		tmp[2];
 
 	if (((ft_strlen(e->name) + e->index) % tgetnum("co"))
 			!= tgetnum("co") - 1)
@@ -40,11 +52,11 @@ static int		loop_sizetotab(char *ptr, size_t pos, int size, char *end)
 
 static int		sizeoftab(t_env *e, int i)
 {
-	int	size;
-	size_t	pos;
-	size_t	sizecol;
-	char*	ptr;
-	char*	end;
+	int			size;
+	size_t		pos;
+	size_t		sizecol;
+	char		*ptr;
+	char		*end;
 
 	size = 8;
 	sizecol = tgetnum("co");
@@ -56,7 +68,7 @@ static int		sizeoftab(t_env *e, int i)
 
 void			ft_goleft(t_env *e)
 {
-	int	n;
+	int			n;
 
 	if (e->str[e->index - 1] == '\t')
 		n = sizeoftab(e, e->index - 1);
@@ -69,7 +81,7 @@ void			ft_goleft(t_env *e)
 
 void			ft_goright(t_env *e)
 {
-	int	n;
+	int			n;
 
 	if (e->str[e->index] == '\t')
 		n = sizeoftab(e, e->index);

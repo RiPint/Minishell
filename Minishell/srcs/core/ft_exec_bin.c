@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_exec_bin.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jerollin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/16 17:27:32 by jerollin          #+#    #+#             */
+/*   Updated: 2016/11/16 17:28:14 by jerollin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/ft_sh1.h"
 #include <sys/stat.h>
 
-t_env*		ft_call_env(t_env **shell)
+t_env		*ft_call_env(t_env **shell)
 {
-	static t_env*save;
+	static t_env	*save;
 
 	if (shell && *shell)
 	{
@@ -60,7 +72,7 @@ void		ft_wrong_exit(char *father, int sig_num, char *son)
 
 static int	ft_set_binpath(t_env *shell)
 {
-	inti;
+	int		i;
 
 	i = 0;
 	if (shell->path != NULL)
@@ -89,7 +101,7 @@ static int	ft_set_binpath(t_env *shell)
 
 void		ft_exec_bin(t_env *shell)
 {
-	intstat_loc;
+	int		stat_loc;
 
 	if (ft_set_binpath(shell) == 0)
 	{

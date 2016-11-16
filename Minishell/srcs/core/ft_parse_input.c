@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parse_input.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jerollin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/16 17:29:35 by jerollin          #+#    #+#             */
+/*   Updated: 2016/11/16 17:30:08 by jerollin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/ft_sh1.h"
 
 static int		ft_commandmatch(char *name, char *test)
@@ -14,8 +26,8 @@ static int		ft_commandmatch(char *name, char *test)
 
 static void		ft_print_environ(t_env *shell)
 {
-	int i;
-	int j;
+	int		i;
+	int		j;
 
 	i = 0;
 	j = 0;
@@ -42,7 +54,7 @@ static void		ft_print_environ(t_env *shell)
 
 static int		ft_count_arg(char **av)
 {
-	int i;
+	int		i;
 
 	i = 0;
 	while (av[i])

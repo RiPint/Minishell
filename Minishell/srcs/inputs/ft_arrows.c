@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_arrows.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jerollin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/16 17:53:31 by jerollin          #+#    #+#             */
+/*   Updated: 2016/11/16 17:55:20 by jerollin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/ft_sh1.h"
 
 static void		ft_shellup(t_env *e)
@@ -54,7 +66,7 @@ static void		ft_leftright(t_env *e, char *inputs)
 	}
 }
 
-int			ft_arrows(t_env *e, char *inputs)
+int				ft_arrows(t_env *e, char *inputs)
 {
 	ft_leftright(e, inputs);
 	if (inputs[0] == 27 && inputs[1] == 91 && inputs[2] == 66)

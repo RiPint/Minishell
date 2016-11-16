@@ -1,10 +1,22 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_editenv.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jerollin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/16 17:26:28 by jerollin          #+#    #+#             */
+/*   Updated: 2016/11/16 17:48:41 by jerollin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/ft_sh1.h"
 
-static void	ft_remove_from_env(t_env *shell, int pos, int size)
+static void		ft_remove_from_env(t_env *shell, int pos, int size)
 {
-	char**ne;
-	char**ptr;
-	char**penv;
+	char	**ne;
+	char	**ptr;
+	char	**penv;
 
 	if (!(ne = (char **)malloc(sizeof(char *) * size + 1)))
 		return ;
@@ -21,10 +33,10 @@ static void	ft_remove_from_env(t_env *shell, int pos, int size)
 	shell->env = ne;
 }
 
-static void	ft_unset_from_env(t_env *shell)
+static void		ft_unset_from_env(t_env *shell)
 {
-	intline_to_remove;
-	inti;
+	int		line_to_remove;
+	int		i;
 
 	i = 0;
 	line_to_remove = -1;
@@ -38,7 +50,7 @@ static void	ft_unset_from_env(t_env *shell)
 		ft_remove_from_env(shell, line_to_remove, i);
 }
 
-static int	ft_got_space(char *str)
+static int		ft_got_space(char *str)
 {
 	while (*str)
 	{
@@ -49,13 +61,13 @@ static int	ft_got_space(char *str)
 	return (0);
 }
 
-int		ft_setenv(t_env *shell)
+int				ft_setenv(t_env *shell)
 {
 	if (shell->ac == 3)
 	{
 		if (ft_got_space(shell->av[1]))
 			ft_error_2char(
-					"setenv: \x1B[31mInvalid in this context\x1B[00m: ", shell->av[1]);
+			"setenv: \x1B[31mInvalid in this context\x1B[00m: ", shell->av[1]);
 		else if (ft_get_env_addr(shell, shell->av[1]))
 			ft_set_env_value(shell, shell->av[1], shell->av[2]);
 		else
@@ -67,7 +79,7 @@ int		ft_setenv(t_env *shell)
 	return (0);
 }
 
-int		ft_unsetenv(t_env *shell)
+int				ft_unsetenv(t_env *shell)
 {
 	if (shell->ac == 2)
 	{
@@ -79,7 +91,7 @@ int		ft_unsetenv(t_env *shell)
 			ft_unset_from_env(shell);
 		else
 			ft_error_2char(
-					"unsetenv: \x1B[31munknown variable\x1B[00m: ", shell->av[1]);
+			"unsetenv: \x1B[31munknown variable\x1B[00m: ", shell->av[1]);
 	}
 	else
 		ft_putstr("unsetenv: \x1B[31mwrong usage\x1B[00m: unsetenv [var]\n");

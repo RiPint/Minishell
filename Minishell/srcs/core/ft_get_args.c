@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_get_args.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jerollin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/16 17:28:39 by jerollin          #+#    #+#             */
+/*   Updated: 2016/11/16 17:29:29 by jerollin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/ft_sh1.h"
 
-static char*		ft_get_word(char **str, char *quote)
+static char			*ft_get_word(char **str, char *quote)
 {
-	char*ptr;
-	char*word;
+	char	*ptr;
+	char	*word;
 
 	if (!(word = (char *)ft_memalloc(sizeof(char) * ft_strlen(*str))))
 		return (NULL);
@@ -39,10 +51,10 @@ static size_t		ft_parse_loop(t_env *shell, char **str, char quote)
 
 static size_t		ft_parse_len(t_env *shell, char **str)
 {
-	char*tmp;
-	char*ptr;
-	charquote;
-	size_tv;
+	char	*tmp;
+	char	*ptr;
+	char	quote;
+	size_t	v;
 
 	quote = '\0';
 	v = 0;
@@ -62,12 +74,12 @@ static size_t		ft_parse_len(t_env *shell, char **str)
 	return (v);
 }
 
-char**			ft_parse_args(t_env *shell, char *input)
+char				**ft_parse_args(t_env *shell, char *input)
 {
-	char**argv;
-	char**ptr;
-	intlen;
-	charquote;
+	char	**argv;
+	char	**ptr;
+	int		len;
+	char	quote;
 
 	quote = '\0';
 	len = ft_parse_len(shell, &input);

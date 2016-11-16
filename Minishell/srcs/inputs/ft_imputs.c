@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_imputs.c                                        :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jerollin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/16 17:58:09 by jerollin          #+#    #+#             */
+/*   Updated: 2016/11/16 18:03:03 by jerollin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/ft_sh1.h"
 
-int		ft_quit(t_env *e, char *inputs)
+int			ft_quit(t_env *e, char *inputs)
 {
 	if (inputs[0] == 3)
 		return (0);
@@ -23,7 +35,7 @@ int		ft_quit(t_env *e, char *inputs)
 	return (0);
 }
 
-int		ft_delete(t_env *e, char *inputs)
+int			ft_delete(t_env *e, char *inputs)
 {
 	if (inputs[0] == 27 && inputs[1] == 91 && inputs[2] == 51 &&
 			(inputs[3] == 126 && inputs[4] == 0))
@@ -68,10 +80,10 @@ static int	ft_manage_inputs(t_env *e, char *inputs)
 	return (-1);
 }
 
-int		ft_get_inputs(t_env *e)
+int			ft_get_inputs(t_env *e)
 {
 	char	inputs[7];
-	int	value;
+	int		value;
 
 	ft_bzero(inputs, 7);
 	ft_clean_histo(e);

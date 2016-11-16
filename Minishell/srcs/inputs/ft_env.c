@@ -1,9 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_env.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jerollin <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2016/11/16 17:57:33 by jerollin          #+#    #+#             */
+/*   Updated: 2016/11/16 17:58:04 by jerollin         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../includes/ft_sh1.h"
 
 static void		ft_update_shlvl(t_env *e)
 {
-	char**	shlvl;
-	char*	v;
+	char		**shlvl;
+	char		*v;
 
 	if ((shlvl = ft_get_env_addr(e, "SHLVL")))
 	{
@@ -17,7 +29,7 @@ static void		ft_update_shlvl(t_env *e)
 
 static void		ft_linkpathfree(char **str, char *new, char c)
 {
-	char*	tmp;
+	char		*tmp;
 
 	tmp = ft_linkpath(*str, new, c);
 	free(*str);
@@ -70,9 +82,9 @@ static void		ft_ironshell(t_env *shell)
 		ft_composepath(shell);
 }
 
-t_env*			ft_get_env(char **envp)
+t_env			*ft_get_env(char **envp)
 {
-	t_env*	e;
+	t_env		*e;
 
 	if (!(e = (t_env *)ft_memalloc(sizeof(t_env))))
 		return (NULL);
