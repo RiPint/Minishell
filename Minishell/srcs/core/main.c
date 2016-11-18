@@ -6,7 +6,7 @@
 /*   By: jerollin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 17:30:55 by jerollin          #+#    #+#             */
-/*   Updated: 2016/11/16 19:02:10 by jerollin         ###   ########.fr       */
+/*   Updated: 2016/11/18 17:22:55 by jerollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static int		ft_minishell(char **envp)
 		return (0);
 	ft_call_env(&shell);
 	ft_init_signals();
-	shell->name_shell = ft_strdup("\033[32mShabbach > \033[0m");
+	shell->name_shell = ft_strdup("\033[32mJerollin > \033[0m");
 	shell->name_process = ft_strdup("test");
 	tputs(tgetstr("ve", (char **)(&shell->p->buf)), 1, ft_putc);
 	tputs(tgetstr("vs", (char **)(&shell->p->buf)), 1, ft_putc);

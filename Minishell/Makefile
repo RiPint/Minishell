@@ -1,10 +1,10 @@
-#-------------compilateur------------------#
+#==============(Compilateur)=============#
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./includes -O3 -g
-#--------------Name-------------------------#
+#==============(Name)=================#
 NAME = ft_minishell1
 
-#--------------Sources----------------------#
+#=============(Sources)===============#
 FILES_CORE =	main.c\
 	    		ft_dub_environ.c\
 	    		ft_exec_bin.c\
@@ -43,7 +43,7 @@ BASEDIR_SIGNALS = srcs/signals
 OBJECT_DIR = objs
 
 #CURRENT_DIR = $(shell pwd)/$(NAME)
-#--------------Actions----------------------#
+#==================(Action)======================#
 
 .PHONY: all, fclean, clean, re
 
@@ -61,7 +61,7 @@ $(NAME): $(OBJECT_DIR)
 	@$(CC) -o $(NAME) $(OBJECT) -L ./includes/libft -l ft -L /usr/lib -ltermcap
 	@echo "\033[1;32m>>> ft_sh1... ok <<<\033[0m"
 	@bash -c "sh setIcon.sh icon/gladosh_icon.png ft_minishell1"
-	@bash -c "touch auteur && echo \"shabbach\" > auteur"
+	@bash -c "touch auteur && echo \"Jerollin\" > auteur"
 	@bash -c "sh setIcon.sh icon/auteur_icon.png auteur"
 	@mv *.o objs
 #@echo $(CURRENT_DIR)

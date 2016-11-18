@@ -6,7 +6,7 @@
 /*   By: jerollin <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2016/11/16 17:57:33 by jerollin          #+#    #+#             */
-/*   Updated: 2016/11/16 17:58:04 by jerollin         ###   ########.fr       */
+/*   Updated: 2016/11/18 17:33:53 by jerollin         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ t_env			*ft_get_env(char **envp)
 
 	if (!(e = (t_env *)ft_memalloc(sizeof(t_env))))
 		return (NULL);
-	e->name = ft_strdup("\033[32mShabbach > \033[0m");
+	e->name = ft_strdup("\033[32mJerollin > \033[0m");
 	if (!(e->p = ft_get_params()))
 		return (NULL);
 	if (!(e->str = ft_strdup("")))
