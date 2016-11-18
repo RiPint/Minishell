@@ -2,7 +2,7 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -I./includes -O3 -g
 #==============(Name)=================#
-NAME = ft_minishell1
+NAME = minishell
 
 #=============(Sources)===============#
 FILES_CORE =	main.c\
@@ -54,13 +54,13 @@ $(NAME): $(OBJECT_DIR)
 	@echo "\033[4;1;35m ... Patientez svp ...\033[0m"
 	@make -C includes/libft
 	@echo "\033[1;32m>>> libft... ok  <<<\033[0m"
-	@echo "\033[4;1;33m***   Compilation de ft_sh1  ***\033[0m"
+	@echo "\033[4;1;33m***   Compilation de minishell.h  ***\033[0m"
 	@$(CC) -c $(CFLAGS) $(addprefix $(BASEDIR_CORE)/, $(FILES_CORE)) \
 	$(addprefix $(BASEDIR_INPUTS)/, $(FILES_INPUTS)) \
 	$(addprefix $(BASEDIR_SIGNALS)/, $(FILES_SIGNALS))
 	@$(CC) -o $(NAME) $(OBJECT) -L ./includes/libft -l ft -L /usr/lib -ltermcap
-	@echo "\033[1;32m>>> ft_sh1... ok <<<\033[0m"
-	@bash -c "sh setIcon.sh icon/gladosh_icon.png ft_minishell1"
+	@echo "\033[1;32m>>> minishell.h... ok <<<\033[0m"
+	@bash -c "sh setIcon.sh icon/gladosh_icon.png minishell"
 	@bash -c "touch auteur && echo \"Jerollin\" > auteur"
 	@bash -c "sh setIcon.sh icon/auteur_icon.png auteur"
 	@mv *.o objs
@@ -68,11 +68,12 @@ $(NAME): $(OBJECT_DIR)
 
 clean :
 	@echo "\033[4;1;31mClean OBJS      >>\033[0m     \033[1;32mok.\033[0m"
-	@rm -Rf $(OBJECT_DIR)
-
+	@rm -rf objs
+	@make -C includes/libft clean
 fclean: clean
-	@echo "\033[4;1;31mClean ft_sh1    >>\033[0m     \033[1;32mok.\033[0m"
-	@rm -Rf $(NAME)
+	@echo "\033[4;1;31mClean minishell    >>\033[0m     \033[1;32mok.\033[0m"
+	@make -C includes/libft fclean 
+	@rm -rf $(NAME)
 
 re:	fclean all
 
